@@ -57,7 +57,7 @@ public class CircleLinkedList<E> {
         iterator.next = null;
         iterator.value = null;
         // TODO: 4/20/18 - Decrease the size here
-        size--;
+//        size--;
         return saved;
 
     }
