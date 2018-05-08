@@ -101,13 +101,14 @@ class SinglyLinkedList{
 	/**
 	 * Prints contents of the list
 	 */
-	public void display(){
+	public String display(){
+		String ret="";
 		Node current = head;
 		while(current!=null){
-			System.out.print(current.getValue()+" ");
+			ret +=current.getValue()+" ";
 			current = current.next;
 		}
-		System.out.println();
+		return ret;
 	}
 	
 	/**
