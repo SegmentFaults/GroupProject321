@@ -12,56 +12,88 @@ public class SinglyLinkedTest {
     public void setUp() throws Exception {
         singleLinkedList = new SinglyLinkedList();
     }
-
-    @Test
-    public void getSizeNoElementsAdded() {
-        int expected = 0;
-        assertEquals(expected, singleLinkedList.getSize());
+    public void atNthSetup() {
+    	this.singleLinkedList.insertHead(5);
+    	this.singleLinkedList.insertHead(4);
+    	this.singleLinkedList.insertHead(3);
+    	this.singleLinkedList.insertHead(2);
+    	this.singleLinkedList.insertHead(1);
     }
-
-    @Test
-    public void getSizeOneElementAdded() {
-        int expected = 1;
-        singleLinkedList.insertHead(10);
-        assertEquals(expected, singleLinkedList.getSize());
-    }
-
-    @Test
-    public void getSizeFiftyThousandElementsAdded() {
-        int expected = 50000;
-        for (int i = 0; i < expected; i++) {
-            singleLinkedList.insertHead(i);
-        }
-        assertEquals(expected, singleLinkedList.getSize());
-    }
-
-    @Test
-    public void insertHeadOneElement() {
-        int expectedSize = 1;
-        singleLinkedList.insertHead(2);
-        assertEquals(expectedSize, singleLinkedList.getSize());
-
-    }
+    /*
+     * 1. [1,2,3,4,5,6,9,10]
+	 *2. [1,2,3,4,5,6,7,8]
+	 *3. [7,8,6,9,10]
+	 *4. [1,2,3,11]
+	 *5. [7,8,6,7]
+	 *6. [8,6,7,8]
+	 *7. [6,7,8,6]
+	 *8. [1,2,12]
+	 *
+	 */
     
     @Test
-    public void removeOneElement() {
-        int expectedSize = 6;
-        singleLinkedList.insertHead(1);
-        singleLinkedList.insertHead(2);
-        singleLinkedList.insertHead(3);
-        singleLinkedList.insertHead(4);
-        singleLinkedList.insertHead(5);
-        singleLinkedList.insertHead(6);
-        singleLinkedList.insertHead(7);
-        singleLinkedList.deleteHead();
-        assertEquals(expectedSize, singleLinkedList.getSize());
+    public void getSizeTestOne() {
+        //this tests size of two
+        this.singleLinkedList.insertHead(1);
+        this.singleLinkedList.insertHead(2);
+        assertEquals(this.singleLinkedList.getSize(), 2);
     }
+    @Test
+    public void getSizeTestTwoandThreeAndFiveAndSixAndSeven() {
+        this.singleLinkedList.insertHead(1);
+        this.singleLinkedList.insertHead(2);
+        this.singleLinkedList.insertHead(3);
+        assertEquals(this.singleLinkedList.getSize(), 3);
+    }
+    @Test
+    public void getSizeTestFour() {
+        this.singleLinkedList.insertHead(1);
+        assertEquals(this.singleLinkedList.getSize(), 1);
+    }
+    @Test
+    public void getSizeTestEight() {
+        assertEquals(this.singleLinkedList.getSize(), 0);
+    }
+    /*
+		insertAtNth
+		1.[1,3,4,5,6,7] // this test covers 3, 4, 5, 6
+		2.[1,3,4,5,8,9] // insert at the front.
+		3.[6,7,5,8,9]
+		4.[5,6,7,5]
+		5.[7,5,6,7]
+		6. [6,7,5,6]
+		7. [1,2]	//check for bad index
 
-    
+     */
+    @Test
+    public void insertAtNthTestOne() {
+        this.atNthSetup();
+        //list is currently 1 2 3 4 5
+        this.singleLinkedList.insertAtNth(10, 2);
+        assertEquals(this.singleLinkedList.display(), "1 2 3 10 4 5 ");
+    }
+    @Test
+    public void insertAtNthTestTwo() {
+    	this.atNthSetup();
+        //list is currently 1 2 3 4 5
+        this.singleLinkedList.insertAtNth(10, 0);
+        assertEquals(this.singleLinkedList.display(), "10 1 2 3 4 5 ");
+    }
     @Test(expected = IndexOutOfBoundsException.class)
-    public void insertElementAbovePosition() {
-        singleLinkedList.insertHead(1);
-        singleLinkedList.insertHead(2);
-        singleLinkedList.insertAtNth(3, 6);
+    public void insertAtNthTestSeven() {
+        this.atNthSetup();
+        this.singleLinkedList.insertAtNth(10, 10);
+    }
+    @Test
+    public void testInsertHead() {
+    	this.singleLinkedList.insertHead(1);
+    	 assertEquals(this.singleLinkedList.display(), "1 ");
+    }
+    @Test
+    public void testDeleteHead() {
+    	this.singleLinkedList.insertHead(1);
+   	 	assertEquals(this.singleLinkedList.display(), "1 ");
+   	 	this.singleLinkedList.deleteHead();
+   	 	assertEquals(this.singleLinkedList.display(), "");
     }
 }
