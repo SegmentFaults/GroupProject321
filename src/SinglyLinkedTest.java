@@ -30,7 +30,7 @@ public class SinglyLinkedTest {
 	 *8. [1,2,12]
 	 *
 	 */
-    
+    //this tests size of two
     @Test
     public void getSizeTestOne() {
         //this tests size of two
@@ -38,6 +38,7 @@ public class SinglyLinkedTest {
         this.singleLinkedList.insertHead(2);
         assertEquals(this.singleLinkedList.getSize(), 2);
     }
+    //this tests n many sized list
     @Test
     public void getSizeTestTwoandThreeAndFiveAndSixAndSeven() {
         this.singleLinkedList.insertHead(1);
@@ -45,11 +46,15 @@ public class SinglyLinkedTest {
         this.singleLinkedList.insertHead(3);
         assertEquals(this.singleLinkedList.getSize(), 3);
     }
+	
+    // this tests a one sized list. 
     @Test
     public void getSizeTestFour() {
         this.singleLinkedList.insertHead(1);
         assertEquals(this.singleLinkedList.getSize(), 1);
     }
+	
+    // this test a zero sized list
     @Test
     public void getSizeTestEight() {
         assertEquals(this.singleLinkedList.getSize(), 0);
@@ -65,6 +70,8 @@ public class SinglyLinkedTest {
 		7. [1,2]	//check for bad index
 
      */
+	
+     // this tests an n many list having an element added. 
     @Test
     public void insertAtNthTestOne() {
         this.atNthSetup();
@@ -72,6 +79,8 @@ public class SinglyLinkedTest {
         this.singleLinkedList.insertAtNth(10, 2);
         assertEquals(this.singleLinkedList.display(), "1 2 3 10 4 5 ");
     }
+	
+    // this tests addition to the beginning of a list. 
     @Test
     public void insertAtNthTestTwo() {
     	this.atNthSetup();
@@ -79,16 +88,22 @@ public class SinglyLinkedTest {
         this.singleLinkedList.insertAtNth(10, 0);
         assertEquals(this.singleLinkedList.display(), "10 1 2 3 4 5 ");
     }
+
+    //this tests an n many list and going beyond the bounds of the list. 
     @Test(expected = IndexOutOfBoundsException.class)
     public void insertAtNthTestSeven() {
         this.atNthSetup();
         this.singleLinkedList.insertAtNth(10, 10);
     }
+	
+    // this tests the insertHead method's only node. 
     @Test
     public void testInsertHead() {
     	this.singleLinkedList.insertHead(1);
     	 assertEquals(this.singleLinkedList.display(), "1 ");
     }
+	
+    // this tests deletehead's only node. 	
     @Test
     public void testDeleteHead() {
     	this.singleLinkedList.insertHead(1);
