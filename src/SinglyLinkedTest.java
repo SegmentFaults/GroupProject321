@@ -1,4 +1,7 @@
-
+// Author: Michael Gentile
+// Date: 9 May 2018
+// Miami University CSE 321
+// Singly linked list testing file. 
 import org.junit.Before;
 import org.junit.Test;
 
